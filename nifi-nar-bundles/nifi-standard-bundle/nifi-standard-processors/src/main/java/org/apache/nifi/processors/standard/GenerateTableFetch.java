@@ -212,7 +212,7 @@ public class GenerateTableFetch extends AbstractDatabaseFetchProcessor {
             // For each maximum-value column, get a WHERE filter and a MAX(column) alias
             IntStream.range(0, maxValueColumnNameList.size()).forEach((index) -> {
                 String colName = maxValueColumnNameList.get(index);
-                maxValueSelectColumns.add("MAX(" + colName + ") " + colName);
+                maxValueSelectColumns.add("MAX(" + colName + ") AS " + colName);
                 final String fullyQualifiedStateKey = getStateKey(tableName, colName);
                 String maxValue = statePropertyMap.get(fullyQualifiedStateKey);
                 if (StringUtils.isEmpty(maxValue) && !isDynamicTableName) {
